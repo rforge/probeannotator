@@ -1,0 +1,37 @@
+\name{probeAnnot}
+\alias{probeAnnot}
+\title{transform_UCSC
+
+A function to annotate probes from different platforms using results from Bowtie.}
+\usage{
+probeAnnot(fasta.file, bowtie.files, file.out, probe_pattern = "",
+  gene_pattern = "", weights = c(1, 0.5, 0.25))
+}
+\arguments{
+  \item{fasta.file}{a character vector giving the name of
+  the probes' FASTA file.}
+
+  \item{bowtie.files}{a character vector giving the names
+  of the probes' BOWTIE alignement map files.}
+
+  \item{file.out}{a character vector giving the name of the
+  ouput file.}
+
+  \item{probe_pattern}{a character vector giving the PCRE
+  expression for the probes (used only if you have
+  probesets).}
+
+  \item{gene_pattern}{a character vector giving the PCRE
+  expression for the genes.}
+
+  \item{weights}{a vector of double giving the weights
+  associated to the number of missmatch (values must be
+  between 0 and 1).}
+}
+\description{
+transform_UCSC
+
+A function to annotate probes from different platforms
+using results from Bowtie.
+}
+
