@@ -1,51 +1,66 @@
-
-<!-- This is the project specific website template -->
-<!-- It can be changed as liked or replaced by other content -->
-
 <?php
-
-$domain=ereg_replace('[^\.]*\.(.*)$','\1',$_SERVER['HTTP_HOST']);
-$group_name=ereg_replace('([^\.]*)\..*$','\1',$_SERVER['HTTP_HOST']);
-$themeroot='r-forge.r-project.org/themes/rforge/';
-
-echo '<?xml version="1.0" encoding="UTF-8"?>';
+include 'includes/header.php';
 ?>
-<!DOCTYPE html
-	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en   ">
 
-  <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title><?php echo $group_name; ?></title>
-	<link href="http://<?php echo $themeroot; ?>styles/estilo1.css" rel="stylesheet" type="text/css" />
-  </head>
+<body>  
 
-<body>
+<section id=sec_summary>
+	<h1 onclick="layout_showunshow('div_summary',this,'inline-block');">Summary &#x25BE;</h1>
+	<div id=div_summary style='display:inline-block;'>
 
-<!-- R-Forge Logo -->
-<table border="0" width="100%" cellspacing="0" cellpadding="0">
-<tr><td>
-<a href="http://r-forge.r-project.org/"><img src="http://<?php echo $themeroot; ?>/imagesrf/logo.png" border="0" alt="R-Forge Logo" /> </a> </td> </tr>
-</table>
+		<i>ProbeAnnotator</i> is a package that contains simple and efficient functions for the annotation of genomic platforms (e.g. Illumina, Affymetrix) using bowtie alignment.<br> This tool as been developed within the <i>Bioinformatics Core Facility, Swiss Institute of Bioinformatics</i>. More information about the team on our <a href="http://bcf.isb-sib.ch/">webpage</a>.<br> 
+		<p> The project summary page on <strong>r-forge</strong> can be found <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/">here</a>.</p>
+
+	</div> 
+</section> 
 
 
-<!-- get project title  -->
-<!-- own website starts here, the following may be changed as you like -->
+<section id=sec_tutorial>
+	<h1 onclick="layout_showunshow('div_tutorial',this,'inline-block');">Tutorials &#x25BE;</h1>
+	<div id=div_tutorial style='display:inline-block;'>
+		<table>
+		<thead>
+		<tr><th>Name</th><th>Platform</th><th>Version</th><th>Files</th></tr>
+		</thead>
+		<tbody>
+		</tbody>
+		</table>
+	</div> 
+</section> 
 
-<?php if ($handle=fopen('http://'.$domain.'/export/projtitl.php?group_name='.$group_name,'r')){
-$contents = '';
-while (!feof($handle)) {
-	$contents .= fread($handle, 8192);
-}
-fclose($handle);
-echo $contents; } ?>
 
-<!-- end of project description -->
 
-<p> No content added. </p>
+<section id=sec_download>
+	<h1 onclick="layout_showunshow('div_download',this,'inline-block');">Download Package &#x25BE;</h1>
+	<div id=div_download style='display:inline-block;'>
+		<table>
+		<thead>
+		<tr><th>System</th><th>Version</th><th>File</th></tr>
+		</thead>
+		<tbody>
+		<tr><td>Linux</td><td>1.0.1</td><td><a href=ProbeAnnotator_1.0.1.tar.gz>download</td></tr>
+		</tbody>
+		</table>
+	</div> 
+</section> 
 
-<p> The <strong>project summary page</strong> you can find <a href="http://<?php echo $domain; ?>/projects/<?php echo $group_name; ?>/"><strong>here</strong></a>. </p>
 
-</body>
+
+<section id=sec_contact>
+	<h1 onclick="layout_showunshow('footer',this,'block');">Contact &#x25BE;</h1>
+	<div id=footer style='display:block;'>
+		<p id="about">If any information is needed, contact the (small) developer team.</p>
+		<div id="footerlist"> 
+			<h3>Contact</h3>
+			<a href="mailto:alexandre.thiery@unil.ch">Via Email</a>
+		</div> 
+		<div id=team> 
+			<h3>Team</h3>
+			<p id="footercopy">Alexandre Thiéry, Swiss Institute of Bioinformatics</p>
+		</div> 
+	</div> 
+</section> 
+	
+
 </html>
+

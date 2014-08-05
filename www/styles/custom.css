@@ -1,0 +1,91 @@
+*{
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+
+
+
+header {
+    background: #FFFFFF;
+    height:200px;
+    padding: 10px;
+    color:#000000;
+}
+
+/* FOOTER START */
+ 
+div#footer {
+  clear:both;
+  padding: 5px; 
+  width:100%;
+}
+/* BEGIN FOOTER STYLES */
+ 
+div p#about {
+  width:300px;
+  margin:20px 50px 0px 30px; /* Play with these to suit */
+  float:left; /* Other elements in the footer will wrap to the right of this */
+}
+ 
+div#footerlist {
+  float:right; /* Place this on the other side of the footer */
+  padding-right:40px;
+  margin-top:10px; /* Play with this */
+  text-align:center;
+}
+div#team {
+  clear:both;
+  text-align:center;
+  font-size:0.9em; /* Slightly smaller text for copyright text. */
+}
+
+
+
+div#footerlist a {
+    text-decoration: none;
+    width: auto;
+    padding: 9px 15px;
+	margin:10px;    
+	border: 0;
+    border-radius: 2px;
+    background: #619398;
+    color: #FFFFFF;
+    font-size: 15px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+div a {
+    text-decoration: none;
+    width: auto;
+    padding: 1px 2px;
+	margin:5px;    
+	border: 0;
+    border-radius: 2px;
+    background: #619398;
+    color: #FFFFFF;
+    font-size: 15px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+
+
+h3 {
+  margin-top:0px;
+}
+ 
+
+/* END FOOTER STYLES */
+/* END FOOTER */
+
+
+
+/* SECTIONS */
+section {
+    border-top: 1px solid black;
+    margin-top:10px;
+    padding: 5px;
+    background: #eee;
+	width:100%;
+}

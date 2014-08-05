@@ -1,0 +1,48 @@
+table {
+	margin:5px;
+}
+
+table,th,td {
+	border:1px solid #999;
+	border-collapse:collapse;
+}
+
+th,td {
+	padding:5px;
+	font-family:verdana;
+}
+
+/* HEADER */
+th {
+	color:#FFF;
+	background-color:#555;
+}
+
+/* 2-COLOR ROWS */
+tbody tr:nth-child(odd) {
+	background-color:#ddf;
+}
+tbody tr:nth-child(even) {
+	background-color:#e8e8e8;
+}
+
+/* HOVER */
+tbody tr:hover {
+	background-color:yellow;
+}
+
+/* BUTTON LIKE 'a' tag */
+tbody a {
+    text-decoration: none;
+    width: auto;
+    padding: 2px 3px;
+	margin:5px;    
+	border: 0;
+    border-radius: 2px;
+    background: #619398;
+    color: #FFFFFF;
+    font-size: 15px;
+	text-align: center;
+	vertical-align: middle;
+}
+
