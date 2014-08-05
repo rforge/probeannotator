@@ -1,0 +1,17 @@
+Package: ProbeAnnotator
+Type: Package
+Title: Base functions to create latex reports.
+Version: 1.0.1
+Date: 2014-04-07
+Authors@R: c(person("Alexandre", "Thiery", role = c("aut", "cre"), email =
+    "alexandre.thiery@unil.ch"), person("Charlotte", "Sonession", role = "cre",
+    email = "charlotte.sonesson@unil.ch"))
+Author: Alexandre Thiery, Charlotte Sonession.
+Maintainer: Alexandre Thiery <alexandre.thiery@unil.ch>
+Description: Package to annotate probes from various platforms.
+Imports:
+    AnnotationDbi
+Suggests:
+    org.Mm.eg.db,
+    org.Hs.eg.db
+License: GPL
