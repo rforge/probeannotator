@@ -1,5 +1,5 @@
 #include <R.h>
-#include "pcre.h"
+#include <pcre.h>
 #include <string.h>
 #include <stdio.h>
 #include <stddef.h>
