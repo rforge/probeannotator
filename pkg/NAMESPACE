@@ -1,7 +1,0 @@
-export(bowtie.makeAlignment)
-export(bowtie.makeIndex)
-export(probeAnnot)
-export(transform_TAB)
-export(transform_UCSC)
-importFrom(AnnotationDbi,as.list)
-useDynLib(ProbeAnnotator)
