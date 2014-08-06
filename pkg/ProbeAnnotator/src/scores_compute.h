@@ -46,7 +46,8 @@ void scores_compute(probe_t **probes, gene_t **genes, score_t **scores, double *
 			if(GENE == NULL) /* SHOULD NEVER HAPPEN -> all genes are supposed to be in the hashtable */
 			{
 			  Rprintf("ERROR:\tCannot find gene %s in the hashtable\n", ((PROBE->best_score_s[0])->id.gene_id).gene_name);
-			  exit(-1);
+			  return;
+			  //exit(0);
 			}
 			
 			if(GENE->best < PROBE->best_score) {

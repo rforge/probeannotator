@@ -4,9 +4,7 @@
 
 A function to create the command to create an index with Bowtie.}
 \usage{
-bowtie.get.makeIndexCommand(file.in, index,
-  bowtie.path = "/net/sib-pc12/export/big/csoneson/Projects/almac_annotation/bowtie-1.0.0",
-  index.dir = NULL)
+bowtie.get.makeIndexCommand(file.in, index, bowtie.path, index.dir = NULL)
 }
 \arguments{
   \item{file.in}{a character vector giving the name of the
@@ -16,12 +14,11 @@ bowtie.get.makeIndexCommand(file.in, index,
   index to create.}
 
   \item{bowtie.path}{a character vector giving the path of
-  BOWTIE source files. Default value for the BCF is
-  \code{"/net/sib-pc12/export/big/csoneson/Projects/almac_annotation/bowtie-1.0.0"}}
+  BOWTIE source files.}
 
   \item{index.dir}{a character vector giving the path of
-  BOWTIE indexes files. Default value for the BCF is
-  \code{bowtie.path + "/indexes/"}}
+  BOWTIE indexes files. Default value is \code{bowtie.path
+  + "/indexes/"}}
 }
 \description{
 bowtie.get.makeIndexCommand

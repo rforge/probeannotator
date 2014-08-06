@@ -100,9 +100,9 @@ while(fgets (line, 5000, fp1)!=NULL ) {
  	} else 
 	{
 		Rprintf("ERROR:\tPattern '%s' cannot be found in '%s'.\nExiting...\n", pattern[0], line);
-		exit(-1);
-		
-		break;
+		fclose(fp1);
+		return;
+		//exit(0);
 	}
 
 

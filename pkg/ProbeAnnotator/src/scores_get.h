@@ -1,5 +1,5 @@
 #include <R.h>
-#include <pcre.h>
+#include "pcre.h"
 #include <string.h>
 #include <stdio.h>
 #include <stddef.h>
@@ -68,7 +68,8 @@ while(fgets (line, LINEMAX, fp1)!=NULL ) {
 		if(temp1 == NULL) /* SHOULD NEVER HAPPEN -> all probes are supposed to be in the hashtable */
 		{
 			Rprintf("ERROR:\tCannot find probe %s in the hashtable.\nExiting...\n", str_probe);
-			exit(-1);
+			fclose(fp1);
+		    return;
 		}
 
 		/* FIND or CREATE gene */
@@ -95,7 +96,8 @@ while(fgets (line, LINEMAX, fp1)!=NULL ) {
 			temp3 = (score_t*)malloc(sizeof(score_t));
 			if(temp3 == NULL) {
 			  Rprintf("It appears there is not enought memory\n"); 
-			  return;
+		  	  fclose(fp1);
+		  	  return;
 			}
 			temp3->id = temp4;
 			for(int i = 0; i < PROBE_LEN; ++i)
@@ -110,8 +112,10 @@ while(fgets (line, LINEMAX, fp1)!=NULL ) {
 		}
 		
 		if(temp3 == NULL) {
-		  Rprintf("NNO\n"); 
-		  
+		  Rprintf("It appears there is not enought memory\n"); 
+		  fclose(fp1);
+		  return;
+		
 		}
 		
 		
@@ -208,7 +212,9 @@ for(int map = 0; map < nb_map; map++) {
 			pcre_get_substring(str_probe, subStrVec, pcreExecRet, 0, &(match_probe));
 		} else { /* SHOULD NEVER HAPPEN -> users must make sure the regex will work */
 			Rprintf("ERROR:\tPattern '%s' cannot be found in '%s'.\nExiting...\n", pattern_probe[0], str_probe);
-			exit(-1);
+			
+		  fclose(fp1);
+		  return;
 		}
 	  //Rprintf("Probe: %s\n", str_probe);
 	  //Rprintf("Probe extract: %s\n", match_probe);
@@ -234,7 +240,9 @@ for(int map = 0; map < nb_map; map++) {
 		if(temp1 == NULL) /* SHOULD NEVER HAPPEN -> all probes are supposed to be in the hashtable */
 		{
 			Rprintf("ERROR:\tCannot find probe %s in the hashtable.\nExiting...\n", match_probe);
-			exit(-1);
+			
+		  fclose(fp1);
+		  return;
 		}
 
 		/* FIND or CREATE gene */
@@ -260,8 +268,9 @@ for(int map = 0; map < nb_map; map++) {
 		if(temp3 == NULL) {
 			temp3 = (score_t*)malloc(sizeof(score_t));
 			if(temp3 == NULL) {
-			  Rprintf("It appears there is not enought memory\n"); 
-			  return;
+		  Rprintf("It appears there is not enought memory\n"); 
+		  fclose(fp1);
+		  return;
 			}
 			temp3->id = temp4;
 			for(int i = 0; i < PROBE_LEN; ++i)
@@ -276,7 +285,9 @@ for(int map = 0; map < nb_map; map++) {
 		}
 		
 		if(temp3 == NULL) {
-		  Rprintf("NNO\n"); 
+		  Rprintf("It appears there is not enought memory\n"); 
+		  fclose(fp1);
+		  return;
 		  
 		}
 		

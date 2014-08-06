@@ -63,13 +63,13 @@ scores_print(&probes, &genes, &scores, file_out);
 /* STEP 5 - print result info in console */
 /* print STEP 1 */
 num_users = HASH_COUNT(probes);
-printf("|Nb probes: %u.\n", num_users);
+Rprintf("|Nb probes: %u.\n", num_users);
 /* print STEP 2 */
 num_users = HASH_COUNT(genes);
-printf("|Nb genes: %u.\n", num_users);
+Rprintf("|Nb genes: %u.\n", num_users);
 /* print STEP 3 */
 num_users = HASH_COUNT(scores);
-printf("|Nb scores: %u.\n", num_users);
+Rprintf("|Nb scores: %u.\n", num_users);
 
 
 /* STEP 6- FREE */

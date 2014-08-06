@@ -2,7 +2,7 @@
 #'
 #' A function modify platforms' TAB files to FASTA
 #'
-#' @name transform_UCSC
+#' @name transform_TAB
 #' @param fasta.file a character vector giving the name of the input TAB file.
 #' @param file.out a character vector giving the name of the ouput FASTA file.
 #' @param probe_column a character vector giving the names of the probe column to extract. 
@@ -11,6 +11,7 @@
 #' @details
 #' The aim of function step is to transform the platforms sequence TAB files in fasta files format. For example, taking a sequence name from Mouse:
 #' @export
+#' @useDynLib ProbeAnnotator
 transform_TAB = function(fasta.file, file.out, probe_column, seq_column, hasProbeset) {
   # Get the number of transcripts ...
   message("Transform TAB file")
