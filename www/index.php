@@ -49,7 +49,7 @@ include 'includes/header.php';
 <section id=sec_contact>
 	<h1 onclick="layout_showunshow('footer',this,'block');">Contact &#x25BE;</h1>
 	<div id=footer style='display:block;'>
-		<p id="about">If any information is needed, contact the (small) developer team.</p>
+		<p id="about">If any information is needed, contact the developer team.</p>
 		<div id="footerlist"> 
 			<h3>Contact</h3>
 			<a href="mailto:alexandre.thiery@unil.ch">Via Email</a>
@@ -57,6 +57,10 @@ include 'includes/header.php';
 		<div id=team> 
 			<h3>Team</h3>
 			<p id="footercopy">Alexandre Thiéry, Swiss Institute of Bioinformatics</p>
+			<p id="footercopy">Charlotte Soneson, Swiss Institute of Bioinformatics</p>
+			<p id="footercopy">Asa Wiripati, Swiss Institute of Bioinformatics</p>
+			<p id="footercopy">Sarah Gerster, Swiss National Science Foundation</p>
+			<p id="footercopy">Giovani d'Ario, NovImmune (Switzerland)</p>
 		</div> 
 	</div> 
 </section> 
