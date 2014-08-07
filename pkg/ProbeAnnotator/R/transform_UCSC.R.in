@@ -18,7 +18,7 @@
 transform_UCSC = function(fasta.file, file.out, appendString = "", organism = "Mm") {
 
 
-  if(!TRUE)
+  if(!@HAVE_PCRE_BOOL@)
 	stop("PCRE lib is not available")
 
   # Get the number of transcripts ...
