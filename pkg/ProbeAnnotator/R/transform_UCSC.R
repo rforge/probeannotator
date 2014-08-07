@@ -16,6 +16,11 @@
 #' @importFrom AnnotationDbi as.list
 #' @useDynLib ProbeAnnotator
 transform_UCSC = function(fasta.file, file.out, appendString = "", organism = "Mm") {
+
+
+  if(!TRUE)
+	stop("PCRE lib is not available")
+
   # Get the number of transcripts ...
   message("Extract the refSeqs count")
   result_length = 0

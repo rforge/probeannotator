@@ -1,5 +1,7 @@
 #include <R.h>
+#ifdef HAVE_PCRE_H
 #include <pcre.h>
+#endif
 #include <string.h>
 #include <stdio.h>
 #include <stddef.h>
@@ -58,7 +60,12 @@ fclose(fp1);
 
 
 void get_probes_set(char **fasta_file, char **pattern, probe_t **probes) {
-
+#ifndef HAVE_PCRE_H
+Rprintf("PCRE library not found during compilation. Function empty");
+return;
+#endif
+  
+#ifdef HAVE_PCRE_H
 //probes
 probe_t *temp;
 
@@ -138,4 +145,5 @@ while(fgets (line, 5000, fp1)!=NULL ) {
 
 /* free connection */
 fclose(fp1);
+#endif
 }

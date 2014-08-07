@@ -12,6 +12,12 @@
 #' @export
 #' @useDynLib ProbeAnnotator
 probeAnnot = function(fasta.file, bowtie.files, file.out, probe_pattern = "", gene_pattern = "", weights = c(1,0.5,0.25)) {
+
+
+  if(!TRUE)
+	stop("PCRE lib is not available")
+
+
   #PARAMETERS
   ## - FASTA FILE
   fasta.file = path.expand(fasta.file)

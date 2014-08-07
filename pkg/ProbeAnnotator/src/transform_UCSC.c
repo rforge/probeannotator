@@ -1,5 +1,7 @@
 #include <R.h>
+#ifdef HAVE_PCRE_H
 #include <pcre.h>
+#endif
 #include <string.h>
 #include <stdio.h>
 #include <stddef.h>
@@ -32,7 +34,12 @@ result_len[0] = counter;
 }
 
 void get_UCSC_refSeq(char **fasta_file, char **result, int *result_len) {
-
+#ifndef HAVE_PCRE_H
+Rprintf("PCRE library not found during compilation. Function empty");
+return;
+#endif
+  
+#ifdef HAVE_PCRE_H
   
 /* PCRE+variables */
 pcre *re_1;
@@ -83,6 +90,7 @@ while(fgets (line, LINEMAX, fp1)!=NULL ) {
 fclose(fp1);
 /* free PCRE */
 free(re_1);
+#endif
 }
 
 void print_transformed_UCSC(char **fasta_file, char **file_out, char **new_names) {

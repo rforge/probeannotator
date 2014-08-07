@@ -1,5 +1,7 @@
 #include <R.h>
+#ifdef HAVE_PCRE_H
 #include <pcre.h>
+#endif
 #include <string.h>
 #include <stdio.h>
 #include <stddef.h>
@@ -8,7 +10,12 @@
 
 
 void scores_get(char **bowtie_file, int nb_map, probe_t **probes, gene_t **genes, score_t **scores, int max_missmatch, char **pattern_gene) {
-
+#ifndef HAVE_PCRE_H
+Rprintf("PCRE library not found during compilation. Function empty");
+return;
+#endif
+  
+#ifdef HAVE_PCRE_H
   
 /* PCRE+variables */
 pcre *re_gene;
@@ -153,12 +160,19 @@ while(fgets (line, LINEMAX, fp1)!=NULL ) {
 // free connection
 fclose(fp1);
 }
+#endif
 }
 
 
 
 void scores_get_set(char **bowtie_file, int nb_map, probe_t **probes, gene_t **genes, score_t **scores, int max_missmatch, char **pattern_gene, char **pattern_probe) {
 
+#ifndef HAVE_PCRE_H
+Rprintf("PCRE library not found during compilation. Function empty");
+return;
+#endif
+  
+#ifdef HAVE_PCRE_H
 //probe
 probe_t *temp1;
 score_t *temp3;
@@ -327,4 +341,5 @@ for(int map = 0; map < nb_map; map++) {
 // free connection
 fclose(fp1);
 }
+#endif
 }

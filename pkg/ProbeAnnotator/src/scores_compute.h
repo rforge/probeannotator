@@ -1,5 +1,7 @@
 #include <R.h>
+#ifdef HAVE_PCRE_H
 #include <pcre.h>
+#endif
 #include <string.h>
 #include <stdio.h>
 #include <stddef.h>
