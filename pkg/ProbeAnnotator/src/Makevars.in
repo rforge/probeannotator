@@ -1,3 +1,0 @@
-PKG_CFLAGS = @HAVE_PCRE@
-
-
