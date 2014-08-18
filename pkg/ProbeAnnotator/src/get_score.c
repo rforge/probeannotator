@@ -13,12 +13,12 @@
 
 
 void score(char **fasta_file, char **bowtie_map_file, int* nb_map, char **pattern_gene, char **pattern_probe, int *hasProbeSet, double *w, int *maxMissmatch, char **file_out) {
-#ifndef HAVE_PCRE_H
-Rprintf("PCRE library not found during compilation. Function empty");
-return;
-#endif
+//#ifndef HAVE_PCRE_H
+//Rprintf("PCRE library not found during compilation. Function empty");
+//return;
+//#endif
   
-#ifdef HAVE_PCRE_H
+//#ifdef HAVE_PCRE_H
   /* There are 8 steps in this function  */
   
   
@@ -101,6 +101,6 @@ return;
     HASH_DEL(scores,current_t);  /* delete; users advances to next */
     free(current_t);            /* optional- if you want to free  */
   }
-#endif
+//#endif
 }
 
