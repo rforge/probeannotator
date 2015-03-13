@@ -1,9 +1,21 @@
 #include <iostream>
+#include <sstream>  // Required for stringstreams
 #include <fstream> 
 #include <string>
 #include <stdio.h>
+#include <stdlib.h>
 #include <Rcpp.h>
 
+std::string IntToString ( int number )
+{
+  std::ostringstream oss;
+
+  // Works just like cout
+  oss<< number;
+
+  // Return the underlying string
+  return oss.str();
+}
 
 template <typename T>
     bool IsInBound(const T& value, const T& low, const T& high) {
@@ -46,7 +58,7 @@ SEXP annotateByLocation(SEXP inputData, SEXP txDbData, SEXP txGroupData, SEXP tx
 	//from input
 	//'id', 'chr', 'strand', 'probeEnd', 'start' ,'end', 'txGroup'
 	Rcpp::CharacterVector inputStrand = input["strand"];
-	Rcpp::CharacterVector inputName = input["id"];
+	Rcpp::CharacterVector inputName = input["ID"];
 	Rcpp::CharacterVector inputChrom = input["chr"];
 	Rcpp::IntegerVector inputStart = input["start"];
 	Rcpp::IntegerVector inputEnd = input["end"];
@@ -76,13 +88,12 @@ SEXP annotateByLocation(SEXP inputData, SEXP txDbData, SEXP txGroupData, SEXP tx
 			txDbPromotorEnd[i] = txDbEnd[i]+txAnnotRange[0];
 		}
 	}
-
 	//from txGroup
 	//'group', 'index1', 'index2'
 	Rcpp::CharacterVector txGroupChrom = txGroup["group"];
 	Rcpp::IntegerVector txGroupIndex1 = txGroup["index1"];
 	Rcpp::IntegerVector txGroupIndex2 = txGroup["index2"];
-	std::unordered_map<std::string, int> hashTxGroup;
+	std::tr1::unordered_map<std::string, int> hashTxGroup;
 	for(int i = 0; i < txGroupChrom.length(); ++i)
 	{
 		hashTxGroup.insert( std::pair<std::string,int> (std::string(txGroupChrom[i]), i) );
@@ -91,7 +102,7 @@ SEXP annotateByLocation(SEXP inputData, SEXP txDbData, SEXP txGroupData, SEXP tx
 
 	//from orgDb
 	//orgDbKey[0], orgDbColumns
-	std::unordered_map<std::string, int> hashOrgDb;
+	std::tr1::unordered_map<std::string, int> hashOrgDb;
 	Rcpp::CharacterVector orgDbName = orgDb[ std::string(orgDbKey[0]) ];
 	std::vector<Rcpp::CharacterVector> orgDbVector;
 	for(int i = 1; i < orgDbColumns.length(); ++i)
@@ -117,7 +128,7 @@ SEXP annotateByLocation(SEXP inputData, SEXP txDbData, SEXP txGroupData, SEXP tx
 	
 	for (int i = 0; i < inputGroup.length(); i++) {
 
-		std::unordered_map<std::string,int>::const_iterator got = hashTxGroup.find( std::string(inputGroup[i]) );				
+		std::tr1::unordered_map<std::string,int>::const_iterator got = hashTxGroup.find( std::string(inputGroup[i]) );				
 		if ( got != hashTxGroup.end() )  {
 			int from = txGroupIndex1[got->second];
 			int to = txGroupIndex2[got->second];
@@ -130,14 +141,14 @@ SEXP annotateByLocation(SEXP inputData, SEXP txDbData, SEXP txGroupData, SEXP tx
 
 					if(IsInBound(inputStart[i], txDbStart[j] ,txDbEnd[j]) ||  IsInBound(inputEnd[i], txDbStart[j] ,txDbEnd[j]))
 					{
-							temp1.push_back(mapping(std::string(txDbName[j]), "gene", std::to_string(txDbStart[j]), std::to_string(txDbEnd[j]) ));
+							temp1.push_back(mapping(std::string(txDbName[j]), "gene", IntToString(txDbStart[j]), IntToString(txDbEnd[j]) ));
 					}
 					else if(IsInBound(inputStart[i], txDbPromotorStart[j],txDbPromotorEnd[j]) || IsInBound(inputEnd[i], txDbPromotorStart[j],txDbPromotorEnd[j]))
 					{
-							temp1.push_back(mapping(std::string(txDbName[j]), "promoter", std::to_string(txDbStart[j]), std::to_string(txDbEnd[j]) ));
+							temp1.push_back(mapping(std::string(txDbName[j]), "promoter", IntToString(txDbStart[j]), IntToString(txDbEnd[j]) ));
 					} else  
 					{
-							temp1.push_back(mapping(std::string(txDbName[j]), "extended", std::to_string(txDbStart[j]), std::to_string(txDbEnd[j]) ));
+							temp1.push_back(mapping(std::string(txDbName[j]), "extended", IntToString(txDbStart[j]), IntToString(txDbEnd[j]) ));
 					}
 				}
 			}
@@ -162,7 +173,7 @@ SEXP annotateByLocation(SEXP inputData, SEXP txDbData, SEXP txGroupData, SEXP tx
 
 				std::vector<std::string> orgDbColumnTemp;
 
-				std::unordered_map<std::string,int>::const_iterator got_gene = hashOrgDb.find( temp1[0].gene );				
+				std::tr1::unordered_map<std::string,int>::const_iterator got_gene = hashOrgDb.find( temp1[0].gene );				
 				if ( got_gene != hashOrgDb.end() )  {
 					for(int j = 1; j < orgDbColumns.length(); ++j)
 					{
@@ -176,12 +187,14 @@ SEXP annotateByLocation(SEXP inputData, SEXP txDbData, SEXP txGroupData, SEXP tx
 				}
 				temp1.erase(temp1.begin() + 0);
 
-				for (mapping& s : temp1) { 
+				//for (mapping& s : temp1) { 
+				for (int k = 0; k < temp1.size(); ++k) {
+					mapping s= temp1[k]; 
 					temp_gene += "|" + s.gene; 
 					temp_loctype += "|" + s.loctype; 
 					temp_start += "|" + s.start; 
 					temp_end += "|" + s.end; 	
-					std::unordered_map<std::string,int>::const_iterator got_gene2 = hashOrgDb.find( s.gene );				
+					std::tr1::unordered_map<std::string,int>::const_iterator got_gene2 = hashOrgDb.find( s.gene );				
 					if ( got_gene2 != hashOrgDb.end() )  {
 						for(int j = 1; j < orgDbColumns.length(); ++j)
 						{
