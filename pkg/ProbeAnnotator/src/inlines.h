@@ -43,7 +43,7 @@ inline void DoGeneMapping_NO_INTRONEXON(int inputStart, int inputEnd, int txDbFu
 /*
 do gene mapping WITH exons & introns
 */
-inline void __attribute__((__always_inline__)) DoGeneMapping_EXONINTRON(int inputStart, int inputEnd, int txDbFullStart, int txDbFullEnd,  
+inline void DoGeneMapping_EXONINTRON(int inputStart, int inputEnd, int txDbFullStart, int txDbFullEnd,  
 					int txDbExtendedStart, int txDbExtendedEnd, int txDbStart, int txDbEnd, int txDbPromotorStart, int txDbPromotorEnd, 
 					std::vector<Mapping> &mappings,
 					std::string geneName, std::string txName, 
