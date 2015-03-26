@@ -1,6 +1,8 @@
+#include <Rcpp.h>
+#include "annotatorClass.h"
 #include "byLocation.h"
 #include "byAlignment.h"
-#include <Rcpp.h>
+
 
 
 // annotateByLocation

@@ -2,10 +2,6 @@
 #ifndef INCLUDED_STRUCTS_H
 #define INCLUDED_STRUCTS_H
 //code...
-#include <string>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sstream>
 
 /*
 Mapping Structure

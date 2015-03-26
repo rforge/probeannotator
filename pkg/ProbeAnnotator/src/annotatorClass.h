@@ -3,8 +3,13 @@
 #define INCLUDED_ANNOTATORCLASS_CPP
 //code...
 #include <vector>
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+#include <sstream>  // Required for stringstreams
+#include <fstream> 
+#include "structs.h"
 #include "inlines.h"
-#include <Rcpp.h>
 
 class Annotator {
 protected:

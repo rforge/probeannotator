@@ -1,12 +1,3 @@
-#include <iostream>
-#include <sstream>  // Required for stringstreams
-#include <fstream> 
-#include <string>
-#include <vector>
-#include "annotatorClass.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <Rcpp.h>
 
 class ByLocation : public Annotator {
     //own data
