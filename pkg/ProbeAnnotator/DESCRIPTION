@@ -1,17 +1,22 @@
 Package: ProbeAnnotator
 Type: Package
 Title: Faste Gene Annotation in R
-Version: 0.99.0
-Date: 2015-03-12
+Version: 0.99.1
+Date: 2015-03-26
 Author: Alexandre Thiery, Pierre Bady
 Maintainer: Alexandre Thiery <alexandre.thiery@unil.ch>
 Description: This package provides fast and user friendly wrappers to C++ functions for gene annotation.
 License: GPL (>= 2)
 Depends: Rcpp (>= 0.11.4),
-		GenomicFeatures
+		GenomicFeatures, 
+		AnnotationDbi,
+		RSQLite
 Imports: 
 		GenomicRanges
 Suggests: 
 		org.Hs.eg.db,
-		TxDb.Hsapiens.UCSC.hg19.knownGene
+		TxDb.Hsapiens.UCSC.hg19.knownGene,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
 LinkingTo: Rcpp
