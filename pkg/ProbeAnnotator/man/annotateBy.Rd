@@ -162,6 +162,7 @@ For example assume that a probe is mapped both to HOXA10 and EGFR, then all colu
 }
 \examples{
 ## .. todo
+\dontrun{
 ## Example of 3 coordinates of the MGMT gene on chromosome 10
 ## - coordinates: chr10:27132612-2713562
 ## - assembly: hg19 (default in annotateByLocation)
@@ -187,5 +188,6 @@ annot_df = annotateByLocation(x = df, mapType = "EXON")
 all.equal(annot_gr, annot_df)
 
 print(annot_gr)
+}
 }
 
