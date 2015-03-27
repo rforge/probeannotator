@@ -1,4 +1,7 @@
 #include <Rcpp.h>
+#include <fstream> 
+#include "structs.h"
+#include "inlines.h"
 #include "annotatorClass.h"
 #include "byLocation.h"
 #include "byAlignment.h"
@@ -22,8 +25,8 @@ BEGIN_RCPP
         Rcpp::traits::input_parameter< SEXP >::type vecSEPData(vecSEPDataSEXP );
         Rcpp::traits::input_parameter< SEXP >::type vecRangesData(vecRangesDataSEXP );
         Rcpp::traits::input_parameter< SEXP >::type listFunctionParamData(listFunctionParamDataSEXP );
-        //SEXP __result = R_NilValue;
-	SEXP __result = annotateByLocation(inputData, dfGENETXData, dfGENETXGroupData, dfEXONData, stackEXONData, dfORGDBData, 
+ 				
+				SEXP __result = annotateByLocation(inputData, dfGENETXData, dfGENETXGroupData, dfEXONData, stackEXONData, dfORGDBData, 
 		      vecORGDBColumnsData, vecSEPData, vecRangesData, listFunctionParamData);
         PROTECT(__sexp_result = Rcpp::wrap(__result));
     }
@@ -51,7 +54,6 @@ RcppExport SEXP ProbeAnnotator_annotateByAlignment(SEXP inputDataSEXP, SEXP dfGE
         Rcpp::traits::input_parameter< SEXP >::type vecSEPData(vecSEPDataSEXP);
         Rcpp::traits::input_parameter< SEXP >::type vecRangesData(vecRangesDataSEXP);
         Rcpp::traits::input_parameter< SEXP >::type listFunctionParamData(listFunctionParamDataSEXP);
-        //SEXP __result = R_NilValue;
         //annotateByLocation(inputData, txDbData, txGroupData, txDbKeyData, txAnnotRangeData, orgDbData, orgDbKeyData, orgDbColumnsData, sepInterData, dfEXONData, stackEXONData);
         SEXP __result = annotateByAlignment(inputData, dfGENETXData, dfGENETXGroupData, dfEXONData, stackEXONData, dfORGDBData,
                 vecORGDBColumnsData, vecSEPData, vecRangesData, listFunctionParamData);

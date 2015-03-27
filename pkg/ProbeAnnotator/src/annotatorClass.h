@@ -1,16 +1,3 @@
-// annotatorClass.cpp
-#ifndef INCLUDED_ANNOTATORCLASS_CPP
-#define INCLUDED_ANNOTATORCLASS_CPP
-//code...
-#include <vector>
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include <sstream>  // Required for stringstreams
-#include <fstream> 
-#include "structs.h"
-#include "inlines.h"
-
 class Annotator {
 protected:
     // variables
@@ -289,28 +276,6 @@ protected:
             std::vector<int> tempo = Rcpp::as<std::vector<int> >(stackEXON[i]);
             txDbExonID[i] = tempo;
         }
-        //stackIndex = Rcpp::as<std::vector<int> >( stackEXON["value"] );
-        //stackTxName = stackEXON["name"]; 
-        //std::tr1::unordered_map<std::string, std::vector<int> > hashEXON;
-        /*{
-                std::vector<int> temp_vec;
-                std::string temp_name;
-                std::string temp_nameI;
-                for(int i = 0; i < stackIndex.size(); ++i) 
-                {
-                        temp_name = std::string( stackTxName[i] );
-                        temp_nameI = temp_name;
-                        temp_vec.clear();
-                        while(i < stackIndex.size() && temp_name == temp_nameI) {
-                                                temp_nameI = std::string(stackTxName[i]);
-                std::tr1::unordered_map<int,int>::const_iterator got = hashTemp.find (stackIndex[i]);
-                                                temp_vec.push_back( got->second );
-                                                i++;
-                        }
-                        i--;
-                        hashEXON.insert( std::pair<std::string, std::vector<int> > (temp_name, temp_vec) );
-                }
-        }*/
 
 
         //from dfGENETXGroup
@@ -338,4 +303,4 @@ protected:
 
 
 };
-#endif /* ANNOTATORCLASS_CPP */
+
