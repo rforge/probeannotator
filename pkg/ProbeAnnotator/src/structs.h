@@ -1,3 +1,8 @@
+// structs.h
+#ifndef INCLUDED_STRUCTS_H
+#define INCLUDED_STRUCTS_H
+//code...
+
 /*
 Mapping Structure
  */
@@ -75,3 +80,4 @@ struct Probe {
         this->setname = setname;
     }
 };
+#endif 
